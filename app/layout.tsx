@@ -1,42 +1,26 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Figtree, Inter, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
 
-const figtree = Figtree({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-figtree",
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-space-grotesk",
+  display: "swap",
 })
 
-const inter = Inter({
+const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-inter",
-})
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-  weight: ["400", "500", "600"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "MANTRA | Digital Sorcery for Real Business",
-  description:
-    "Ubah keruwetan operasional menjadi keteraturan otomatis. MANTRA adalah AI Automation Agency yang membantu UMKM bekerja cerdas dengan teknologi.",
-  keywords: [
-    "MANTRA AI",
-    "automation indonesia",
-    "AI UMKM",
-    "otomasi bisnis",
-    "WhatsApp bot",
-    "n8n indonesia",
-    "digital sorcery",
-  ],
-  authors: [{ name: "MANTRA AI Indonesia" }],
-  creator: "MANTRA AI Indonesia",
-  publisher: "MANTRA AI Indonesia",
+  title: "MANTRA | Otomasi Bisnis untuk UMKM",
+  description: "Pecat adminmu, rekrut Mantra. Solusi otomasi bisnis untuk UMKM Indonesia. Hemat biaya, kerja 24 jam.",
+  keywords: ["otomasi bisnis", "AI untuk UMKM", "chatbot whatsapp", "inventory management", "MANTRA"],
   openGraph: {
     type: "website",
     locale: "id_ID",
