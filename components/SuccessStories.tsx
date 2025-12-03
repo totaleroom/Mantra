@@ -114,114 +114,48 @@ const stories = [
     image: "/indonesian-woman-doctor-professional.jpg",
     quote:
       "Appointment reminder otomatis ngurangin no-show sampai 60%. Customer juga lebih happy karena diingatkan H-1.",
-    before: {
-      hours: "3 jam/hari",
-      issues: ["Reminder appointment manual via WA", "Banyak customer no-show", "Jadwal dokter sering bentrok"],
-    },
-    after: {
-      hours: "45 menit/hari",
-      results: ["Reminder otomatis H-1 dan H-3 jam", "No-show turun 60%", "Scheduling terintegrasi 3 cabang"],
-    },
-    metrics: {
-      timeSaved: "2+ jam/hari",
-      noShowReduction: "-60%",
-      satisfaction: "+40%",
-    },
   },
 ]
 
+"use client"
+
+import { motion } from "framer-motion"
+import { Quote } from "lucide-react"
+
 export const SuccessStories = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  const nextStory = () => {
-    setCurrentIndex((prev) => (prev + 1) % stories.length)
-  }
-
-  const prevStory = () => {
-    setCurrentIndex((prev) => (prev - 1 + stories.length) % stories.length)
-  }
-
-  const currentStory = stories[currentIndex]
+  const testimonials = [
+    {
+      name: "Budi Santoso",
+      role: "Owner, Batik Kencana",
+      quote: "Dulu saya harus gaji 3 admin buat bales chat doang. Sekarang pakai Mantra, cuma butuh 1 orang buat handle yang teknis. Hemat 15 juta/bulan.",
+    },
+    {
+      name: "Siti Aminah",
+      role: "Founder, Hijab Daily",
+      quote: "Stok di Shopee sama gudang sering selisih. Sejak pakai Ingatan-nya Mantra, stok real-time. Gak ada lagi drama cancel order.",
+    },
+    {
+      name: "Hendrawan",
+      role: "CEO, Kopi Senja",
+      quote: "Saya kira bakal ribet setup-nya. Ternyata tim Mantra yang kerjain semua. Saya tinggal terima beres, sistem langsung jalan.",
+    },
+  ]
 
   return (
-    <section id="hasil" className="w-full py-20 px-6 lg:px-8 bg-[#f8f9fa]">
-      <div className="max-w-6xl mx-auto">
-        {/* 
-        ============================================================================
-        HEADER SECTION (AMAN DIEDIT)
-        ============================================================================
-        */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          {/* EDIT JUDUL */}
-          <h2
-            className="text-3xl md:text-4xl lg:text-[40px] leading-tight font-medium text-[#202020] mb-4 tracking-tight"
-            style={{ fontFamily: "Figtree" }}
-          >
-            Hasil Nyata dari Klien Kami
+    <section id="hasil" className="w-full py-24 px-6 lg:px-8 bg-white border-b border-[#1A1A1A]">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+            DIPERCAYA <br /> JURAGAN MODERN
           </h2>
-          {/* EDIT DESKRIPSI */}
-          <p className="text-lg text-[#666666] max-w-2xl mx-auto" style={{ fontFamily: "Figtree" }}>
-            Bukan teori. Ini hasil nyata dari bisnis yang sudah pakai automation.
+          <p className="text-xl text-[#1A1A1A]/60 max-w-2xl" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+            Mereka yang sudah memecat keruwetan dan merekrut ketenangan.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Carousel - Otomatis dari array stories di atas */}
-        <div className="relative">
-          <AnimatePresence mode="wait">
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testi, index) => (
             <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.4 }}
-              className="bg-white rounded-3xl overflow-hidden shadow-sm border border-[#e5e5e5]"
-            >
-              <div className="grid lg:grid-cols-2">
-                {/* Kiri: Quote & Profile */}
-                <div className="p-8 lg:p-12 flex flex-col">
-                  <div className="flex-1">
-                    <Quote className="w-10 h-10 text-[#156d95]/20 mb-4" />
-                    <p
-                      className="text-xl lg:text-2xl text-[#202020] leading-relaxed mb-8"
-                      style={{ fontFamily: "Figtree", fontWeight: "400" }}
-                    >
-                      "{currentStory.quote}"
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-full bg-[#e9e9e9] overflow-hidden">
-                      <img
-                        src={currentStory.image || "/placeholder.svg"}
-                        alt={currentStory.owner}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-lg font-medium text-[#202020]" style={{ fontFamily: "Figtree" }}>
-                        {currentStory.owner}
-                      </p>
-                      <p className="text-base text-[#666666]" style={{ fontFamily: "Figtree" }}>
-                        {currentStory.business}, {currentStory.location}
-                      </p>
-                      <p className="text-sm text-[#156d95]" style={{ fontFamily: "var(--font-geist-mono)" }}>
-                        {currentStory.segment}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Kanan: Before/After */}
-                <div className="bg-[#f8f9fa] p-8 lg:p-12">
-                  <div className="grid grid-cols-2 gap-6 mb-8">
-                    {/* Before */}
-                    <div>
                       <div className="flex items-center gap-2 mb-4">
                         <div className="w-2 h-2 rounded-full bg-red-400" />
                         <span
@@ -246,79 +180,79 @@ export const SuccessStories = () => {
                       </ul>
                     </div>
 
-                    {/* After */}
-                    <div>
-                      <div className="flex items-center gap-2 mb-4">
-                        <div className="w-2 h-2 rounded-full bg-green-500" />
-                        <span
-                          className="text-sm font-medium text-green-700 uppercase tracking-wide"
-                          style={{ fontFamily: "var(--font-geist-mono)" }}
-                        >
-                          Sesudah
-                        </span>
-                      </div>
-                      <p
-                        className="text-2xl font-medium text-[#202020] mb-3"
-                        style={{ fontFamily: "var(--font-geist-mono)" }}
-                      >
-                        {currentStory.after.hours}
-                      </p>
-                      <ul className="space-y-2">
-                        {currentStory.after.results.map((result, idx) => (
-                          <li key={idx} className="text-sm text-[#404040]" style={{ fontFamily: "Figtree" }}>
-                            {result}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+        {/* After */}
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-2 h-2 rounded-full bg-green-500" />
+            <span
+              className="text-sm font-medium text-green-700 uppercase tracking-wide"
+              style={{ fontFamily: "var(--font-geist-mono)" }}
+            >
+              Sesudah
+            </span>
+          </div>
+          <p
+            className="text-2xl font-medium text-[#202020] mb-3"
+            style={{ fontFamily: "var(--font-geist-mono)" }}
+          >
+            {currentStory.after.hours}
+          </p>
+          <ul className="space-y-2">
+            {currentStory.after.results.map((result, idx) => (
+              <li key={idx} className="text-sm text-[#404040]" style={{ fontFamily: "Figtree" }}>
+                {result}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
-                  {/* Metrics */}
-                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#e5e5e5]">
-                    <div className="text-center">
-                      <Clock className="w-5 h-5 text-[#156d95] mx-auto mb-2" />
-                      <p
-                        className="text-lg font-medium text-[#202020]"
-                        style={{ fontFamily: "var(--font-geist-mono)" }}
-                      >
-                        {currentStory.metrics.timeSaved}
-                      </p>
-                      <p className="text-xs text-[#666666]" style={{ fontFamily: "Figtree" }}>
-                        Waktu dihemat
-                      </p>
-                    </div>
-                    <div className="text-center">
-                      <TrendingUp className="w-5 h-5 text-green-500 mx-auto mb-2" />
-                      <p
-                        className="text-lg font-medium text-green-600"
-                        style={{ fontFamily: "var(--font-geist-mono)" }}
-                      >
-                        {currentStory.metrics.efficiency}
-                      </p>
-                      <p className="text-xs text-[#666666]" style={{ fontFamily: "Figtree" }}>
-                        Efisiensi
-                      </p>
-                    </div>
-                    <div className="text-center">
-                      <Users className="w-5 h-5 text-[#156d95] mx-auto mb-2" />
-                      <p
-                        className="text-lg font-medium text-[#202020]"
-                        style={{ fontFamily: "var(--font-geist-mono)" }}
-                      >
-                        {Object.values(currentStory.metrics)[2]}
-                      </p>
-                      <p className="text-xs text-[#666666]" style={{ fontFamily: "Figtree" }}>
-                        Impact
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+      {/* Metrics */}
+      <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#e5e5e5]">
+        <div className="text-center">
+          <Clock className="w-5 h-5 text-[#156d95] mx-auto mb-2" />
+          <p
+            className="text-lg font-medium text-[#202020]"
+            style={{ fontFamily: "var(--font-geist-mono)" }}
+          >
+            {currentStory.metrics.timeSaved}
+          </p>
+          <p className="text-xs text-[#666666]" style={{ fontFamily: "Figtree" }}>
+            Waktu dihemat
+          </p>
+        </div>
+        <div className="text-center">
+          <TrendingUp className="w-5 h-5 text-green-500 mx-auto mb-2" />
+          <p
+            className="text-lg font-medium text-green-600"
+            style={{ fontFamily: "var(--font-geist-mono)" }}
+          >
+            {currentStory.metrics.efficiency}
+          </p>
+          <p className="text-xs text-[#666666]" style={{ fontFamily: "Figtree" }}>
+            Efisiensi
+          </p>
+        </div>
+        <div className="text-center">
+          <Users className="w-5 h-5 text-[#156d95] mx-auto mb-2" />
+          <p
+            className="text-lg font-medium text-[#202020]"
+            style={{ fontFamily: "var(--font-geist-mono)" }}
+          >
+            {Object.values(currentStory.metrics)[2]}
+          </p>
+          <p className="text-xs text-[#666666]" style={{ fontFamily: "Figtree" }}>
+            Impact
+          </p>
+        </div>
+      </div>
+    </div>
+              </div >
+            </motion.div >
+          </AnimatePresence >
 
-          {/* Navigation Arrows & Dots */}
-          <div className="flex items-center justify-center gap-4 mt-8">
+  {/* Navigation Arrows & Dots */ }
+  < div className = "flex items-center justify-center gap-4 mt-8" >
             <button
               onClick={prevStory}
               className="w-12 h-12 rounded-full bg-white border border-[#e5e5e5] flex items-center justify-center text-[#666666] hover:text-[#156d95] hover:border-[#156d95] transition-colors"
@@ -347,9 +281,9 @@ export const SuccessStories = () => {
             >
               <ChevronRight className="w-5 h-5" />
             </button>
-          </div>
-        </div>
-      </div>
-    </section>
+          </div >
+        </div >
+      </div >
+    </section >
   )
 }

@@ -1,148 +1,98 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MessageCircle, Settings, Rocket, ArrowRight } from "lucide-react"
+import { MessageSquare, Database, Share2, ArrowUpRight } from "lucide-react"
 
 export const HowItWorks = () => {
-  const steps = [
-    {
-      number: "01",
-      icon: MessageCircle,
-      title: "Konsultasi Gratis",
-      duration: "15 menit",
-      description:
-        "Kita ngobrol tentang bisnis Anda. Identifikasi proses mana yang paling makan waktu dan bisa diotomasi.",
-      details: [
-        "Analisis workflow bisnis Anda",
-        "Identifikasi bottleneck operasional",
-        "Rekomendasi solusi yang tepat",
-      ],
-    },
-    {
-      number: "02",
-      icon: Settings,
-      title: "Setup & Training",
-      duration: "1-2 minggu",
-      description:
-        "Saya bangun sistemnya sesuai kebutuhan bisnis Anda. Anda tinggal pakai, gak perlu ngerti teknisnya.",
-      details: ["Development automation custom", "Integrasi dengan tools yang ada", "Training tim Anda (2 sesi)"],
-    },
-    {
-      number: "03",
-      icon: Rocket,
-      title: "Hemat Waktu, Grow Bisnis",
-      duration: "Ongoing",
-      description:
-        "Fokus ke customer dan produk. Bukan ke kerjaan admin yang repetitif. Support via WhatsApp kapanpun butuh bantuan.",
-      details: ["Monitoring sistem 24/7", "Support via WhatsApp", "Update & maintenance berkala"],
-    },
-  ]
-
   return (
-    <section id="cara-kerja" className="w-full py-20 px-6 lg:px-8 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2
-            className="text-3xl md:text-4xl lg:text-[40px] leading-tight font-medium text-[#202020] mb-4 tracking-tight"
-            style={{ fontFamily: "Figtree" }}
-          >
-            Cara Kerja yang Simple
+    <section id="fitur" className="w-full py-24 px-6 lg:px-8 bg-[#F5F5F0]">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+            THE MANTRA <br /> ECOSYSTEM
           </h2>
-          <p className="text-lg text-[#666666] max-w-2xl mx-auto" style={{ fontFamily: "Figtree" }}>
-            Dari konsultasi sampai go-live, prosesnya gak ribet. Anda gak perlu ngerti teknologi sama sekali.
+          <p className="text-xl text-[#1A1A1A]/60 max-w-2xl" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+            Tiga pilar otomasi untuk menggantikan departemen operasional Anda.
           </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="relative"
-            >
-              {/* Connector Line */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-16 left-full w-full h-[2px] bg-gradient-to-r from-[#156d95]/30 to-transparent -translate-x-4 z-0" />
-              )}
-
-              <div className="bg-[#f8f9fa] rounded-3xl p-8 h-full relative z-10">
-                {/* Step Number */}
-                <div className="flex items-center gap-4 mb-6">
-                  <span
-                    className="text-5xl font-bold text-[#156d95]/20"
-                    style={{ fontFamily: "var(--font-geist-mono)" }}
-                  >
-                    {step.number}
-                  </span>
-                  <div className="w-12 h-12 rounded-2xl bg-[#156d95] flex items-center justify-center">
-                    <step.icon className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-
-                {/* Title & Duration */}
-                <div className="mb-4">
-                  <h3 className="text-xl font-medium text-[#202020] mb-1" style={{ fontFamily: "Figtree" }}>
-                    {step.title}
-                  </h3>
-                  <span
-                    className="text-sm text-[#156d95] bg-[#156d95]/10 px-3 py-1 rounded-full"
-                    style={{ fontFamily: "var(--font-geist-mono)" }}
-                  >
-                    {step.duration}
-                  </span>
-                </div>
-
-                {/* Description */}
-                <p className="text-[#666666] text-base leading-relaxed mb-6" style={{ fontFamily: "Figtree" }}>
-                  {step.description}
-                </p>
-
-                {/* Details List */}
-                <ul className="space-y-2">
-                  {step.details.map((detail, detailIndex) => (
-                    <li
-                      key={detailIndex}
-                      className="flex items-center gap-2 text-sm text-[#404040]"
-                      style={{ fontFamily: "Figtree" }}
-                    >
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#156d95]" />
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-12"
-        >
-          <a
-            href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20mulai%20konsultasi%20gratis"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#156d95] text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-[#156d95]/90 transition-all duration-200 hover:shadow-lg hover:shadow-[#156d95]/20 group"
-            style={{ fontFamily: "Figtree" }}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
+
+          {/* CARD 1: PENJAGA (Large) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="md:col-span-2 bg-[#C0C0C0] p-8 border border-[#1A1A1A] relative group overflow-hidden flex flex-col justify-between"
           >
-            Mulai dari Step 1
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </a>
-        </motion.div>
+            <div className="absolute top-4 right-4 p-2 bg-[#1A1A1A] text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+              <ArrowUpRight className="w-6 h-6" />
+            </div>
+
+            <div className="w-16 h-16 bg-[#1A1A1A] flex items-center justify-center mb-6">
+              <MessageSquare className="w-8 h-8 text-white" />
+            </div>
+
+            <div>
+              <h3 className="text-3xl font-bold text-[#1A1A1A] mb-2" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+                PENJAGA
+              </h3>
+              <p className="text-[#1A1A1A]/80 text-lg mb-4" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+                AI Chatbot & Customer Service
+              </p>
+              <p className="text-[#1A1A1A] text-xl max-w-md leading-relaxed">
+                "Penjaga toko digital yang tidak pernah tidur. Menjawab pertanyaan, memproses order, dan follow-up customer 24/7."
+              </p>
+            </div>
+          </motion.div>
+
+          {/* CARD 2: INGATAN */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-white p-8 border border-[#1A1A1A] relative group hover:shadow-[4px_4px_0px_0px_#FF4F00] transition-shadow"
+          >
+            <div className="w-12 h-12 bg-[#F5F5F0] border border-[#1A1A1A] flex items-center justify-center mb-6">
+              <Database className="w-6 h-6 text-[#1A1A1A]" />
+            </div>
+
+            <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+              INGATAN
+            </h3>
+            <p className="text-[#1A1A1A]/60 text-sm mb-4" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+              CRM & Database
+            </p>
+            <p className="text-[#1A1A1A]">
+              Mencatat setiap pembeli, riwayat order, dan preferensi. Anti lupa, anti data hilang.
+            </p>
+          </motion.div>
+
+          {/* CARD 3: SUARA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="bg-[#1A1A1A] p-8 border border-[#1A1A1A] relative group text-[#F5F5F0]"
+          >
+            <div className="w-12 h-12 bg-[#333] flex items-center justify-center mb-6">
+              <Share2 className="w-6 h-6 text-[#FF4F00]" />
+            </div>
+
+            <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+              SUARA
+            </h3>
+            <p className="text-white/60 text-sm mb-4" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+              Content Automation
+            </p>
+            <p className="text-white/80">
+              Terus posting di sosmed, generate caption, dan schedule konten tanpa Anda perlu pegang HP.
+            </p>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   )
